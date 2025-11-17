@@ -1,0 +1,150 @@
+:root{
+  --accent1:#8e44fd;
+  --accent2:#ff6fb5;
+  --muted:rgba(255,255,255,0.8);
+  --card-radius:18px;
+  --tile-radius:18px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Page background: subtle macOS-ish gradient */
+body{
+  margin:0;
+  min-height:100vh;
+  background: linear-gradient(115deg, #2b4a82 0%, #556b98 28%, #d9c9d8 55%, #596f9f 78%, #2b4a82 100%);
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:40px 18px;
+  color:white;
+}
+
+/* Header pill */
+.topLabel{width:100%;max-width:960px;margin:0 auto 18px}
+.pill{
+  display:inline-block;
+  padding:12px 34px;
+  border-radius:12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  color:var(--accent1);
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Main card (a bigger floating mac tile) */
+.card{
+  width:900px;
+  max-width:96%;
+  border-radius:var(--card-radius);
+  padding:22px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(30px) saturate(140%);
+  -webkit-backdrop-filter: blur(30px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  margin:auto;
+}
+
+/* Title bar inside card */
+.titleBar{
+  background: rgba(255,255,255,0.06);
+  padding:14px;
+  text-align:center;
+  font-weight:700;
+  border-radius:12px;
+  margin-bottom:18px;
+  color:var(--muted);
+  backdrop-filter: blur(10px);
+}
+
+/* mac tile used for each row */
+.mac-tile{
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(26px) saturate(160%);
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+  border-radius:var(--tile-radius);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding:14px;
+  margin-bottom:14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+}
+
+/* hover lift */
+.mac-tile:hover{
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.16);
+  box-shadow: 0 18px 46px rgba(0,0,0,0.42);
+}
+
+/* Row layout */
+.row{display:flex;gap:14px;align-items:flex-start}
+.col{flex:1;min-width:0}
+.small-col{flex:0.7}
+.dob-col{flex:1.4}
+
+/* labels */
+label{display:block;font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:8px}
+
+/* inputs styled as mini mac tiles */
+input, select, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+  box-sizing:border-box;
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  transition: all .22s ease;
+  font-size:14px;
+}
+
+/* stronger look on focus */
+input:focus, select:focus, textarea:focus{
+  outline:none;
+  border-color: rgba(255,255,255,0.7);
+  box-shadow: 0 0 14px rgba(255,255,255,0.28);
+  transform: scale(1.02);
+}
+
+/* small helpers */
+.inline-group{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.radio input{margin-right:6px}
+.hobbies{display:flex;gap:14px;flex-wrap:wrap}
+
+/* DOB selects in one row */
+.dob-row{display:flex;gap:8px}
+.dob-row select{flex:1}
+
+/* Qualification grid */
+.section-title{font-weight:700;margin-bottom:10px;color:rgba(255,255,255,0.9)}
+.qual-grid{display:flex;flex-direction:column;gap:8px}
+.qual-row{display:grid;grid-template-columns:48px 1fr 1fr 1fr 1fr;gap:8px;align-items:center}
+.qual-row.head{font-weight:700;color:rgba(255,255,255,0.85);opacity:0.95}
+.qual-row input{padding:8px;border-radius:8px;font-size:13px}
+
+/* actions */
+.actions{display:flex;justify-content:flex-end;gap:12px}
+.btn-reset, .btn-submit{
+  padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color:white;cursor:pointer;font-weight:700;backdrop-filter:blur(12px);
+}
+.btn-submit{
+  background: linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+  box-shadow: 0 12px 36px rgba(0,0,0,0.36);
+}
+.btn-submit:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(0,0,0,0.45)}
+.btn-reset:hover{background: rgba(255,255,255,0.09)}
+
+/* responsive */
+@media (max-width:880px){
+  .row{flex-direction:column}
+  .qual-row{grid-template-columns:36px 1fr 1fr}
+  .card{padding:16px}
+}
